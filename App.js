@@ -13,6 +13,10 @@ export default function App() {
     setModalVisible(false)
   }
 
+  function calcular(){
+    setModalVisible(true)
+  }
+
  return (
    <View style={styles.container}> 
 
@@ -30,33 +34,30 @@ export default function App() {
         <Text style={styles.text}>Álcool (preço por litro):</Text>
         <TextInput
           style={[styles.input, {marginBottom: 15}]}
-          onChangeText={() => {}}
+          keyboardType='numeric'
+          placeholder='Ex: 3.60'
+          value={alcool}
+          onChangeText={ (text) => setAlcool(text) }
         />
 
 
         <Text style={styles.text} >Gasolina (preço por litro):</Text>
         <TextInput
           style={styles.input}
-          onChangeText={() => {}}
+          keyboardType='numeric'
+          placeholder='Ex: 4.20'
+          value={gasolina}
+          onChangeText={ (text) => setGasolina(text) }
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={calcular}>
           <Text style={styles.textBtn}>Calcular</Text>
         </TouchableOpacity>
       </View>
         
-
-
-
-
-
-
-{/* 
-      <Button  title='Abrir modal' onPress={ () => setModalVisible(true) } />
-
       <Modal transparent={false} visible={modalVisible} animationType="slide">
         <Result fechar={ fecharModal }/>
-      </Modal> */}
+      </Modal> 
    </View>
   );
 }
