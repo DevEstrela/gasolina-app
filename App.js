@@ -12,9 +12,23 @@ export default function App() {
   function fecharModal(){
     setModalVisible(false)
   }
+  function zeraCampo(){
+    setAlcool('');
+    setGasolina('')
+  }
 
   function calcular(){
-    setModalVisible(true)
+  
+    if(alcool === ''){
+      alert('ERROR: Digite o preço do álcool.')
+      return;
+    }                                                 //Validação de campo vazio
+    if(gasolina === ''){
+      alert('ERROR: Digite o preço do gasolina.')
+      return;
+    }
+
+    setModalVisible(true)  //Abre o modal
   }
 
  return (
@@ -56,7 +70,7 @@ export default function App() {
       </View>
         
       <Modal transparent={false} visible={modalVisible} animationType="slide">
-        <Result fechar={ fecharModal }/>
+        <Result zera={zeraCampo} gas={gasolina} alc={alcool} fechar={ fecharModal }/>
       </Modal> 
    </View>
   );
